@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STANDBOY Market · Buy and sell spots</title>
+<meta name="description" content="Official STANDBOY marketplace: list your numbered spot, buy a spot, settle in BNB. Sellers are paid instantly, market fee 2.5%.">
+<link rel="icon" href="favicon.svg?v=1">
+<meta property="og:title" content="STANDBOY Market">
+<meta property="og:description" content="Buy and sell numbered STANDBOY spots. Escrow on-chain, sellers paid instantly.">
+<link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+<div class="strip"><span class="dot"></span><span>STANDBOY MARKET · ESCROW ON-CHAIN · SELLERS PAID INSTANTLY</span></div>
+
+<header class="top"><div class="wrap top-in">
+  <a class="brand" href="index.html"><img src="logo.svg" alt="STANDBOY logo" width="40" height="40"><span>STANDBOY</span></a>
+  <nav class="nav">
+    <a href="index.html#mint">Mint</a><a href="index.html#claim">Claim</a><a href="market.html">Market</a>
+    <a class="x-pill" href="https://x.com/standboyltd" target="_blank" rel="noopener" aria-label="STANDBOY on X"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.3L1 2h6.5l4.4 5.9L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg><span>@standboyltd</span></a>
+  <a href="launch/">Launch</a></nav>
+</div></header>
+
+<main>
+<section class="gate"><div class="wrap">
+  <p class="gno">MARKET · GATE 04, FULL SIZE</p>
+  <h2>Buy a spot. Sell a spot.</h2>
+  <p>Every spot below sits in escrow inside the market contract until it sells or its owner takes it back. Buying settles in a single transaction: the NFT lands in your wallet, the seller receives 97.5% of the price at once, and a 2.5% market fee goes straight to the project wallet. Minting and collecting BOY stay agent-only; trading is the one thing this site does with your wallet.</p>
+  <div class="board small-board">
+    <div class="bcell"><span class="bnum" id="mk-count">·</span><span class="blab">SPOTS LISTED</span></div>
+    <div class="bcell"><span class="bnum gold-t" id="mk-floor">·</span><span class="blab">FLOOR (BNB)</span></div>
+    <div class="bcell"><span class="bnum">2.5%</span><span class="blab">MARKET FEE</span></div>
+  </div>
+  <div class="walletbar">
+    <button class="btn gold" id="wallet-btn" type="button">Connect wallet</button>
+    <span class="walletaddr" id="wallet-addr" style="display:none"></span>
+  </div>
+  <p class="mkt-status" id="mkt-status"></p>
+  <div class="mkt-cards" id="mkt-cards"><p class="mkt-empty">Reading the market…</p></div>
+</div></section>
+
+<section class="gate alt"><div class="wrap">
+  <p class="gno">SELL · YOUR TURN</p>
+  <h2>List your spot</h2>
+  <p>Connect the wallet that holds your spot, name a price, and confirm two wallet steps: an approval, then the listing itself. Your spot moves into escrow while it is listed. Change your mind any time with Delist on your card above, and the spot comes straight back.</p>
+  <div class="listform">
+    <input id="list-price" type="text" inputmode="decimal" placeholder="Price in BNB, e.g. 0.05" autocomplete="off" spellcheck="false">
+    <button class="btn gold" id="list-btn" type="button">List my spot</button>
+  </div>
+  <p class="mkt-status" id="list-res"></p>
+  <ul class="facts">
+    <li><span>Market contract</span><strong class="mono">0x7F2DC95214ef7182C0A6Fc5F9f94C0718aa22987</strong></li>
+    <li><span>NFT contract</span><strong class="mono">0x6043a590F315B9fF44aD3b3298198f89b6b4b548</strong></li>
+    <li><span>Market fee</span><strong>2.5%, paid by the sale, split at once</strong></li>
+  </ul>
+  <p class="fine">A spot keeps its claim state when it changes hands: buy one marked "250,000 BOY unclaimed" and the payout is yours to collect through your agent. Always check the addresses on BscScan before trading.</p>
+  <p class="figcap"><em>fig. 7</em> — Sellers' corner. Mind the drum.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap foot-in">
+  <span>STANDBOY · standboy.ltd</span>
+  <a class="foot-x" href="https://x.com/standboyltd" target="_blank" rel="noopener">X · @standboyltd</a>
+  <a class="foot-x" href="index.html">Home</a>
+  <span>See you on the stand.</span>
+</div></footer>
+
+<script src="js/vendor/ethers.umd.min.js?v=1"></script>
+<script src="js/app.js?v=6"></script>
+</body>
+</html>

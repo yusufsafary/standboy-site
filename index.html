@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STANDBOY · Grab your spot on the stand</title>
+<meta name="description" content="STANDBOY: 5,000 numbered spots on one very loud stand. Your agent takes one for free, and holding it pays out 250,000 BOY.">
+<link rel="icon" href="favicon.svg?v=1">
+<meta property="og:title" content="STANDBOY">
+<meta property="og:description" content="Grab a numbered spot on the stand. Free to take, pays 250,000 BOY.">
+<link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+<nav class="dock" aria-label="Quick actions">
+  <a href="#claim" class="dock-gold">Collect 250,000 BOY</a>
+  <a href="#mint">Take my spot</a>
+  <a href="market.html">Market</a>
+</nav>
+<div class="strip"><span class="dot"></span><span id="strip-text">MINT IS LIVE · FREE TO TAKE · ONE PER AGENT</span></div>
+
+<header class="top"><div class="wrap top-in">
+  <a class="brand" href="#top"><img src="logo.svg" alt="STANDBOY logo" width="40" height="40"><span>STANDBOY</span></a>
+  <nav class="nav">
+    <a href="#mint">Mint</a><a href="#claim">Claim</a><a href="market.html">Market</a>
+    <a class="x-pill" href="https://x.com/standboyltd" target="_blank" rel="noopener" aria-label="STANDBOY on X"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.3L1 2h6.5l4.4 5.9L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg><span>@standboyltd</span></a>
+  <a href="launch/">Launch</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><canvas id="fx" aria-hidden="true"></canvas><div class="wrap hero-in">
+  <div class="hud" aria-hidden="true"><span class="hud-chip"><i class="sq n"></i>WORLD 1 · THE STAND</span><span class="hud-chip">LEVEL <strong id="hud-level">KOP END</strong></span><span class="hud-chip gold-chip">1UP · AGENT</span></div>
+  <div class="mascot" id="mascot" role="button" aria-label="Say hi to the stand boy" title="Tap me">
+    <div class="tapme">tap me</div>
+    <div class="bubble" id="bubble">Pick a spot, any spot.</div>
+    <svg viewBox="0 0 200 190" width="150" height="142">
+      <g class="m-bob">
+        <rect x="52" y="128" width="96" height="14" rx="7" fill="#4AC3FF"/>
+        <rect x="42" y="148" width="116" height="14" rx="7" fill="#FF6B4A"/>
+        <rect x="30" y="168" width="140" height="14" rx="7" fill="#35D07F"/>
+        <rect x="82" y="72" width="36" height="38" rx="14" fill="#FFC53D"/>
+        <g class="m-arm"><rect x="112" y="48" width="34" height="10" rx="5" fill="#FFC53D"/></g>
+        <circle cx="100" cy="52" r="26" fill="#F3EFDF"/>
+        <circle class="m-eye" cx="91" cy="50" r="3" fill="#0A1F14"/>
+        <circle class="m-eye" cx="109" cy="50" r="3" fill="#0A1F14"/>
+        <path d="M92 60 Q100 66 108 60" stroke="#0A1F14" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+  <h1>GRAB YOUR SPOT<br><em>ON THE STAND.</em></h1>
+  <p class="lede">Five thousand spots, every one numbered, every one waiting for a single agent. Yours costs nothing to take, pays out <strong>250,000 BOY</strong> once you hold it, and stays yours through every season after.</p>
+  <div class="cta-row">
+    <a class="btn gold" href="#claim">Collect 250,000 BOY</a>
+    <a class="btn ghost" href="#mint">Take my spot</a>
+  </div>
+  <div class="board" id="board">
+    <div class="bcell"><span class="bnum" id="b-minted">·</span><span class="blab">ON THE STAND</span></div>
+    <div class="bcell"><span class="bnum gold-t" id="b-left">·</span><span class="blab">STILL OPEN</span></div>
+    <div class="bcell"><span class="bnum" id="b-claimed">·</span><span class="blab">SPOTS PAID OUT</span></div>
+    <div class="bcell"><span class="bnum gold-t" id="b-next">·</span><span class="blab">UP NEXT</span></div>
+  </div>
+  <p class="notice"><span class="notice-tag">NOTICE</span><span id="notice-text">Mint is free. It has always been free.</span></p>
+  <div class="xpbar" aria-hidden="true"><span class="xp-lab">STAND XP</span><span class="xp-track"><span class="xp-fill" id="xp-fill"></span></span><span class="xp-num" id="xp-num">0%</span></div>
+  <div class="stands" id="stands" aria-hidden="true"></div>
+  <p class="figcap"><em>fig. 1</em> — One stand, 5,000 numbered spots. It fills in order, Kop End first.</p>
+  <p class="stands-cap">KOP END <i class="sq n"></i> · FAMILY STAND <i class="sq e"></i> · DRUM END <i class="sq s"></i> · FLAG END <i class="sq w"></i> · four ends of one ground, 1,250 spots each. Pick yours.</p>
+</div></section>
+
+<section class="gate rv" id="post"><div class="wrap">
+  <p class="gno">GATE 01 · POST</p>
+  <h2>Shout it before you mint</h2>
+  <p>Supporters announce themselves. Your agent drafts a short post, you put it up for everyone to see, and only then does the mint happen. No post, no spot. House rule since day one.</p>
+  <div class="promptbox"><code id="post-prompt">Read https://standboy.ltd/standboy-skill.md and follow the steps: draft my STANDBOY post, wait for me to publish it, then mint my spot.</code></div>
+  <button class="btn small" data-copy="post-prompt">Copy prompt</button>
+</div></section>
+
+<section class="gate alt rv" id="mint"><div class="wrap">
+  <p class="gno">GATE 02 · MINT</p>
+  <h2>Minting costs nothing. Literally zero.</h2>
+  <p>No ticket price, no booking fee, no commission hiding in a corner somewhere. One spot per wallet, numbered the moment it lands in your hands, minted by your agent holding a Binance Agent ID.</p>
+  <ul class="facts">
+    <li><span>In the ground</span><strong>5,000 spots</strong></li>
+    <li><span>Cost</span><strong>Free, 0 BNB</strong></li>
+    <li><span>Per wallet</span><strong>1 spot, ever</strong></li>
+    <li><span>Status</span><strong id="mint-status">Reading the stand…</strong></li>
+  </ul>
+  <div class="spotcards" aria-hidden="true">
+    <div class="spotcard t1"><span class="sc-no">Nº 0001</span><span class="sc-stand n">KOP END</span><span class="sc-chip">250,000 BOY</span></div>
+    <div class="spotcard t2"><span class="sc-no">Nº 2500</span><span class="sc-stand e">FAMILY STAND</span><span class="sc-chip">250,000 BOY</span></div>
+    <div class="spotcard t3"><span class="sc-no">Nº 5000</span><span class="sc-stand w">FLAG END</span><span class="sc-chip">250,000 BOY</span></div>
+  </div>
+  <table class="standtable" aria-label="Empat tribun">
+    <thead><tr><th>Stand</th><th>Spots</th><th>Filled</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><i class="sq n"></i>KOP END</td><td class="mono">1 – 1,250</td><td class="mono" id="st-0">·</td><td class="fillcell"><span class="fillbar"><span class="fillin n" id="sf-0"></span></span></td></tr>
+      <tr><td><i class="sq e"></i>FAMILY STAND</td><td class="mono">1,251 – 2,500</td><td class="mono" id="st-1">·</td><td class="fillcell"><span class="fillbar"><span class="fillin e" id="sf-1"></span></span></td></tr>
+      <tr><td><i class="sq s"></i>DRUM END</td><td class="mono">2,501 – 3,750</td><td class="mono" id="st-2">·</td><td class="fillcell"><span class="fillbar"><span class="fillin s" id="sf-2"></span></span></td></tr>
+      <tr><td><i class="sq w"></i>FLAG END</td><td class="mono">3,751 – 5,000</td><td class="mono" id="st-3">·</td><td class="fillcell"><span class="fillbar"><span class="fillin w" id="sf-3"></span></span></td></tr>
+    </tbody>
+  </table>
+  <p class="figcap"><em>fig. 2</em> — Catalogue of stands, with occupancy at last reading.</p>
+  <div class="findrow">
+    <button class="btn small gold" id="findspot" type="button">Find me a spot</button>
+    <p class="spotres" id="spot-res" aria-live="polite"></p>
+  </div>
+  <div class="promptbox"><code id="mint-prompt">Read https://standboy.ltd/standboy-skill.md and grab my STANDBOY spot now.</code></div>
+  <button class="btn small" data-copy="mint-prompt">Copy prompt</button>
+  <p class="figcap"><em>fig. 3</em> — Specimens from the catalogue, first, middle and last.</p>
+  <div class="checkrow">
+    <input id="wallet-input" type="text" placeholder="Check a wallet: 0x…" autocomplete="off" spellcheck="false">
+    <button class="btn small ghost" id="check-btn">Check</button>
+    <p class="checkres" id="check-res"></p>
+  </div>
+</div></section>
+
+<section class="gate rv" id="claim"><div class="wrap">
+  <p class="gno gold-t">GATE 03 · CLAIM</p>
+  <h2>Holding pays here</h2>
+  <p>Once a spot sits in your wallet, it can collect 250,000 BOY, one time only, and collecting never costs you the spot itself. You pay a small claim fee, and it lands straight in the project wallet inside the same transaction. Nothing pools inside the contract, nothing waits around for a withdrawal.</p>
+  <div class="board small-board">
+    <div class="bcell"><span class="bnum" id="c-claimed">·</span><span class="blab">PAID OUT</span></div>
+    <div class="bcell"><span class="bnum gold-t" id="c-left">·</span><span class="blab">LEFT IN THE POT</span></div>
+    <div class="bcell"><span class="bnum" id="c-status">·</span><span class="blab">GATE</span></div>
+  </div>
+  <div class="promptbox"><code id="claim-prompt">Read https://standboy.ltd/standboy-claim-skill.md and collect 250,000 BOY for my STANDBOY spot.</code></div>
+  <button class="btn small gold" data-copy="claim-prompt">Copy collect prompt</button>
+</div></section>
+
+<section class="gate alt rv" id="market"><div class="wrap">
+  <p class="gno">GATE 04 · MARKET</p>
+  <h2>Pass it on, or keep it forever</h2>
+  <p>STANDBOY now runs its own little marketplace. List a spot, set a price in BNB, and it waits in escrow until someone buys it or you take it back. Sales settle in one transaction: the seller is paid at once and a 2.5% market fee goes straight to the project wallet. Nothing pools inside the contract.</p>
+  <div class="board small-board">
+    <div class="bcell"><span class="bnum" id="mk-count">·</span><span class="blab">SPOTS LISTED</span></div>
+    <div class="bcell"><span class="bnum gold-t" id="mk-floor">·</span><span class="blab">FLOOR (BNB)</span></div>
+    <div class="bcell"><span class="bnum" id="mk-fee">2.5%</span><span class="blab">MARKET FEE</span></div>
+  </div>
+  <div class="mkt-cards" id="mkt-cards"><p class="mkt-empty">Reading the market…</p></div>
+  <div class="mkt-actions">
+    <a class="btn gold" href="market.html">Open the full market</a>
+  </div>
+  <ul class="facts">
+    <li><span>Market contract</span><strong class="mono">0x7F2DC95214ef7182C0A6Fc5F9f94C0718aa22987</strong></li>
+    <li><span>NFT contract</span><strong class="mono" id="ct-nft">0x6043a590F315B9fF44aD3b3298198f89b6b4b548</strong></li>
+    <li><span>BOY token</span><strong class="mono" id="ct-token">0xC2515e15586183d4E8e1D3Ec9AA4d1Bb53107eDb</strong></li>
+    <li><span>Claim contract</span><strong class="mono" id="ct-claim">0x2caf4b66C2AF9bd18CcA0EAc139dA71B808fcFA2</strong></li>
+  </ul>
+  <p class="fine">Buying and selling happen on the market page, in your own browser wallet. Minting and claiming stay agent-only, like always. Check the addresses on BscScan before trusting any copy of this page.</p>
+  <p class="figcap"><em>fig. 6</em> — Market gate. Doors open inward now.</p>
+</div></section>
+<section class="gate alt rv" id="play"><div class="wrap">
+  <p class="gno">BONUS ROUND · PLAY</p>
+  <h2>Catch a falling spot</h2>
+  <p>Warm up while your agent works. Golden spots rain over the pitch for twenty seconds. Tap as many as you can. Falling green ones are worth three. Nobody keeps score on-chain, bragging rights only.</p>
+  <div class="gamebox" id="gamebox">
+    <div class="game-hud"><span>SCORE <strong id="g-score">0</strong></span><span>TIME <strong id="g-time">20</strong></span><span>BEST <strong id="g-best">0</strong></span></div>
+    <div class="gamefield" id="gamefield"><p class="game-idle" id="game-idle">Press start, then tap the falling spots.</p></div>
+    <button class="btn gold" id="game-start" type="button">Start game</button>
+    <p class="game-res" id="game-res" aria-live="polite"></p>
+  </div>
+  <p class="figcap"><em>fig. 4</em> — A training drill. Reflexes optional, enthusiasm required.</p>
+</div></section>
+
+<section class="gate alt rv" id="listing"><div class="wrap">
+  <p class="gno">RUMOUR DESK · LISTING</p>
+  <h2>Everyone keeps asking about exchanges</h2>
+  <p>Every single day, the same question lands at this ground: when listing? So, for the record, and with a completely straight face:</p>
+  <ul class="facts">
+    <li><span>Tier-1 exchange</span><strong>They have not called. We checked the phone twice.</strong></li>
+    <li><span>Listing date</span><strong>Pencilled in for the twelfth of never</strong></li>
+    <li><span>Market maker</span><strong>A boy with a drum in the Drum End</strong></li>
+    <li><span>Roadmap promise</span><strong>None. Suspicious, we know.</strong></li>
+  </ul>
+  <p>Here is what is real instead: 5,000 spots on a stand, a claim pot holding 1.25 billion BOY, and a token that trades wherever holders decide to trade it, starting with the usual pool on PancakeSwap when the ground announces it. No exchange miracles were promised in the making of this stand.</p>
+  <p class="pull">“When listing?” <em>When the boy says so.</em></p>
+  <p class="figcap"><em>fig. 5</em> — Rumour desk, official statement, heavily peer-reviewed by the drum.</p>
+</div></section>
+
+<section class="gate rv" id="glossary"><div class="wrap">
+  <p class="gno">APPENDIX · GLOSSARY</p>
+  <h2>Words used on this ground</h2>
+  <dl class="gloss">
+    <div><dt>Spot</dt><dd>A numbered place on the stand. One belongs to one wallet, and its number never changes hands even when the spot does.</dd></div>
+    <div><dt>Stand</dt><dd>Four of them hold the ground: Kop End, Family Stand, Drum End, Flag End. Each seats 1,250 spots.</dd></div>
+    <div><dt>Collect</dt><dd>What a spot does once: it pays out 250,000 BOY to whoever holds it, then it simply keeps its seat.</dd></div>
+  </dl>
+  <p class="pull">“One agent, one spot, <em>one very good seat.</em>”</p>
+</div></section>
+</main>
+<div class="pitch" aria-hidden="true"><span class="pitch-line"></span><span class="pitch-circle"></span></div>
+
+<footer><div class="wrap foot-in">
+  <span>STANDBOY · standboy.ltd</span>
+  <a class="foot-x" href="https://x.com/standboyltd" target="_blank" rel="noopener">X · @standboyltd</a>
+  <a class="foot-x" href="market.html">Market</a>
+  <span>See you on the stand.</span>
+</div></footer>
+
+<script src="js/vendor/ethers.umd.min.js?v=1"></script>
+<script src="js/app.js?v=6"></script>
+</body>
+</html>
